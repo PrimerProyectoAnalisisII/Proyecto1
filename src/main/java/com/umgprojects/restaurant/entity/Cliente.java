@@ -1,15 +1,20 @@
 package com.umgprojects.restaurant.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "CLIENTE")
-public class Cliente {
+public class Cliente implements Serializable {
 
+	
+	private static final long serialVersionUID = -8534228859619402378L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idcliente;
@@ -21,6 +26,7 @@ public class Cliente {
 	private Date createdate;
 	
 	@OneToMany(mappedBy = "cliente")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Set<Factura> factura = new HashSet<>();
 
 	public Cliente() {}

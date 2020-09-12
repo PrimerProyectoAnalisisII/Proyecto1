@@ -7,12 +7,14 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="FACTURA")
 public class Factura implements Serializable {
 
+	private static final long serialVersionUID = 5235771401819325562L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idfactura;
@@ -28,7 +30,7 @@ public class Factura implements Serializable {
 	private Date createdate;
 	
 	@OneToMany(mappedBy = "factura")
-	@JsonIgnore
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Set<DetalleFactura> detalleFactura = new HashSet<>();
 
 	public Factura() {}

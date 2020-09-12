@@ -1,13 +1,15 @@
 package com.umgprojects.restaurant.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "DETALLE_FACTURA")
-public class DetalleFactura {
+public class DetalleFactura implements Serializable {
 
+	private static final long serialVersionUID = -5033872924734901930L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer iddetallefactura;
