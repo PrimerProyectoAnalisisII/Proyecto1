@@ -7,7 +7,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="PRODUCTO")
@@ -22,11 +22,11 @@ public class Producto implements Serializable {
 	private Double precioAd;
 	private String createby;
 	private Date createdate;
-	@OneToMany(mappedBy = "producto")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<MenuDetalle> menudetalle = new HashSet<>();
-	@OneToMany(mappedBy = "producto")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<OrdenDetalle> ordendetalle = new HashSet<>();
 	
 	public Producto() {}

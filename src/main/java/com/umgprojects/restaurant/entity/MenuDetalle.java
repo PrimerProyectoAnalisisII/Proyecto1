@@ -14,11 +14,11 @@ public class MenuDetalle implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idmenudetalle;
-	@ManyToOne
-	@JoinColumn(name = "IDMENU")
+	@ManyToOne()
+	@JoinColumn(name = "IDMENU", referencedColumnName = "IDMENU")
 	private Menu menu;
 	@ManyToOne
-	@JoinColumn(name = "IDPRODUCTO")
+	@JoinColumn(name = "IDPRODUCTO", referencedColumnName = "IDPRODUCTO")
 	private Producto producto;
 	private String createby;
 	private Date createdate;

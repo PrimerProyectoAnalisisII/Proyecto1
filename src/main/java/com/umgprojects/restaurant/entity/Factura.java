@@ -7,7 +7,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -19,18 +19,18 @@ public class Factura implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idfactura;
 	@ManyToOne
-	@JoinColumn(name = "IDCLIENTE")
+	@JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
 	private Cliente cliente;
 	@ManyToOne
-	@JoinColumn(name = "IDUSUARIO")
+	@JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
 	private Usuario usuario;
 	private Date fecha;
 	private Double total;
 	private String createby; 
 	private Date createdate;
 	
-	@OneToMany(mappedBy = "factura")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToMany(mappedBy = "factura", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<DetalleFactura> detalleFactura = new HashSet<>();
 
 	public Factura() {}

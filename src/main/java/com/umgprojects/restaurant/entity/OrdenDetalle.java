@@ -14,10 +14,10 @@ public class OrdenDetalle implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idordendetalle;
 	@ManyToOne
-	@JoinColumn(name = "IDORDEN")
+	@JoinColumn(name = "IDORDEN", referencedColumnName = "IDORDEN")
 	private Orden orden;
 	@ManyToOne
-	@JoinColumn(name = "IDPRODUCTO")
+	@JoinColumn(name = "IDPRODUCTO", referencedColumnName = "IDPRODUCTO")
 	private Producto producto;
 	private String createby;
 	private Date createdate;

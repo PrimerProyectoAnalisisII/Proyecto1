@@ -14,10 +14,10 @@ public class DetalleFactura implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer iddetallefactura;
 	@ManyToOne
-	@JoinColumn(name = "IDFACTURA")
+	@JoinColumn(name = "IDFACTURA", referencedColumnName = "IDFACTURA")
 	private Factura factura;
 	@ManyToOne
-	@JoinColumn(name = "IDORDEN")
+	@JoinColumn(name = "IDORDEN", referencedColumnName = "IDORDEN")
 	private Orden orden;
 	private String createby;
 	private Date createdate;
